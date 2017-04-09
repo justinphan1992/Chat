@@ -3,6 +3,8 @@ package com.chat;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.microsoft.azure.mobile.react.analytics.RNAnalyticsPackage;
+import com.microsoft.azure.mobile.react.crashes.RNCrashesPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -26,6 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),
+            new RNCrashesPackage(MainApplication.this, getResources().getString(R.string.mobileCenterCrashes_whenToSendCrashes)),
             new VectorIconsPackage(),
             new RNDeviceInfo(),
             new ReactNativeConfigPackage()
